@@ -14,7 +14,7 @@
          <children>
             <TableView fx:id="employee" layoutX="14.0" layoutY="266.0" prefHeight="187.0" prefWidth="380.0">
               <columns>
-                <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
+                <TableColumn fx:id="Id" prefWidth="75.0" text="Id" />
                 <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
                   <TableColumn fx:id="email" prefWidth="75.0" text="Email" />
                   <TableColumn fx:id="password" prefWidth="75.0" text="Password" />

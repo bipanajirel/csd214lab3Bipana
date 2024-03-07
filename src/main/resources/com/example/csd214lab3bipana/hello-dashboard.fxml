@@ -8,8 +8,8 @@
    <children>
       <Pane layoutX="62.0" layoutY="50.0" prefHeight="200.0" prefWidth="358.0">
          <children>
-            <Button layoutX="25.0" layoutY="27.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Admin" />
-            <Button layoutX="130.0" layoutY="27.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Employee" />
+            <Button fx:id="admin" layoutX="25.0" layoutY="27.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" onAction="#AdmminButton" text="Admin" />
+            <Button fx:id="LogIn" layoutX="130.0" layoutY="27.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" onAction="#EmployeeButton" text="Employee" />
             <Button fx:id="LogOut" layoutX="232.0" layoutY="27.0" mnemonicParsing="false" prefHeight="52.0" onAction="#LogOut" prefWidth="84.0" text="LogOut" />
             <Button layoutX="137.0" layoutY="100.0" mnemonicParsing="false"  prefHeight="52.0" prefWidth="84.0" onAction="#ExitButton" text="Exit" />
          </children>

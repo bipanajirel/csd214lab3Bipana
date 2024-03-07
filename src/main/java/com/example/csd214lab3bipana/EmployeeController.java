@@ -31,7 +31,7 @@ public class EmployeeController implements Initializable{
     @FXML
     private TableView<Employee> employee;
     @FXML
-    private TableColumn<Employee, Integer> id;
+    private TableColumn<Employee, Integer> Id;
     @FXML
     private TableColumn<Employee, String> name;
     @FXML
@@ -44,8 +44,8 @@ public class EmployeeController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        id.setCellValueFactory(new
-                PropertyValueFactory<Employee, Integer>("id"));
+        Id.setCellValueFactory(new
+                PropertyValueFactory<Employee, Integer>("Id"));
         name.setCellValueFactory(new
                 PropertyValueFactory<Employee, String>("Name"));
         email.setCellValueFactory(new
@@ -58,8 +58,7 @@ public class EmployeeController implements Initializable{
     }
 
     @FXML
-    protected void OnClick() {
-        populateTable();
+    protected void OnClick() {populateTable();
     }
 
     public void populateTable() {
@@ -77,12 +76,12 @@ public class EmployeeController implements Initializable{
             ResultSet resultSet = statement.executeQuery(query);
             // Populate the table with data from the database
             while (resultSet.next()) {
-                int iD = resultSet.getInt("id");
+                int Id = resultSet.getInt("eid");
                 String Name = resultSet.getString("Name");
                 String Email = resultSet.getString("Email");
                 String Password = resultSet.getString("Password");
                 String Salary = resultSet.getString("Salary");
-                employee.getItems().add(new Employee(iD, Name, Email, Password, Salary));
+                employee.getItems().add(new Employee(Id, Name, Email, Password, Salary));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -108,7 +107,7 @@ public class EmployeeController implements Initializable{
         try (Connection connection = DriverManager.getConnection(jdbcUrl, dbUser,
                 dbPassword)) {
 // Execute a SQL query to retrieve data from the database
-            String query = "INSERT INTO `admin`(`Name`, `Email`, `Password`,`Salary`) VALUES ('" + name + "','" + email + "','" + password + "','" + salary + "')";
+            String query = "INSERT INTO `employee`(`Name`, `Email`, `Password`,`Salary`) VALUES ('" + name + "','" + email + "','" + password + "','" + salary + "')";
             Statement statement = connection.createStatement();
             statement.execute(query);
 
@@ -119,11 +118,11 @@ public class EmployeeController implements Initializable{
     }
 
     public void DeleteData(ActionEvent actionEvent) {
-        Integer id = Integer.valueOf(iD.getText());
-        DeleteTable(id);
+        Integer Id = Integer.valueOf(iD.getText());
+        DeleteTable(Id);
     }
 
-    private void DeleteTable(Integer id) {
+    private void DeleteTable(Integer Id) {
         // Establish a database connection
         String jdbcUrl = "jdbc:mysql://localhost:3306/csd214lab3bipana";
         String dbUser = "root";
@@ -131,7 +130,7 @@ public class EmployeeController implements Initializable{
         try (Connection connection = DriverManager.getConnection(jdbcUrl, dbUser,
                 dbPassword)) {
 // Execute a SQL query to retrieve data from the database
-            String query = "DELETE FROM `employee` WHERE iD='" + id + "'";
+            String query = "DELETE FROM `employee` WHERE `eid`='" + Id + "'";
             Statement statement = connection.createStatement();
             statement.execute(query);
 
@@ -143,17 +142,17 @@ public class EmployeeController implements Initializable{
     }
 
     public void UpdateData(ActionEvent actionEvent) {
-        Integer id = Integer.valueOf(iD.getText());
+        Integer Id = Integer.valueOf(iD.getText());
         String name = Name.getText();
         String email = Email.getText();
         String password = Password.getText();
         String salary = Salary.getText();
 
-        UpdateTable(id,name, email,password,salary);
+        UpdateTable(Id,name, email,password,salary);
 
     }
 
-    private void UpdateTable(Integer id, String name, String email, String password, String salary) {
+    private void UpdateTable(Integer Id, String name, String email, String password, String salary) {
         // Establish a database connection
         String jdbcUrl = "jdbc:mysql://localhost:3306/csd214lab3bipana";
         String dbUser = "root";
@@ -161,7 +160,7 @@ public class EmployeeController implements Initializable{
         try (Connection connection = DriverManager.getConnection(jdbcUrl, dbUser,
                 dbPassword)) {
 // Execute a SQL query to retrieve data from the database
-            String query = "UPDATE `employee` SET `Name`='" + name + "',`Email`='" + email + "',`Password`='" + password+ "',`Salary`='" +salary + "' WHERE iD='" + id + "'";
+            String query = "UPDATE `employee` SET `Name`='" + name + "',`Email`='" + email + "',`Password`='" + password+ "',`Salary`='" +salary + "' WHERE `eid`='" + Id + "'";
             Statement statement = connection.createStatement();
             statement.execute(query);
             populateTable();
@@ -173,32 +172,32 @@ public class EmployeeController implements Initializable{
     }
 
     public void LoadData(ActionEvent actionEvent) {
-        Integer id = Integer.valueOf(iD.getText());
-        LoadTable(id);
+        Integer Id = Integer.valueOf(iD.getText());
+        LoadTable(Id);
     }
 
-    private void LoadTable(Integer id) {
+    private void LoadTable(Integer Id) {
         String jdbcUrl = "jdbc:mysql://localhost:3306/csd214lab3bipana";
         String dbUser = "root";
         String dbPassword = "";
         try (Connection connection = DriverManager.getConnection(jdbcUrl, dbUser,
                 dbPassword)) {
             // Execute a SQL query to retrieve data from the database
-            String query = "SELECT * FROM employee WHERE iD='" + id + "'";
+            String query = "SELECT * FROM employee WHERE `eid`='" + Id + "'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             // Populate the table with data from the database
             while (resultSet.next()) {
 
-                String Name = resultSet.getString("Name");
-                String Email = resultSet.getString("Email");
-                String Password = resultSet.getString("Password");
-                String Salary = resultSet.getString("Salary");
+                String name = resultSet.getString("Name");
+                String email = resultSet.getString("Email");
+                String password = resultSet.getString("Password");
+                String salary = resultSet.getString("Salary");
 
-                name.setText(Name);
-                email.setText(Email);
-                password.setText(Password);
-                salary.setText(Salary);
+                Name.setText(name);
+                Email.setText(email);
+                Password.setText(password);
+                Salary.setText(salary);
 
 
 

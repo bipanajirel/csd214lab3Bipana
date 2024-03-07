@@ -12,13 +12,13 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-
-    <Label fx:id="welcomeText" />
    <Pane prefHeight="322.0" prefWidth="426.0">
       <children>
          <Button fx:id="Get" layoutX="123.0" layoutY="119.0" mnemonicParsing="false" onAction="#onHelloButtonClick" prefHeight="35.0" prefWidth="61.0" text="Login" />
          <TextField fx:id="mail" layoutX="36.0" layoutY="14.0" prefHeight="35.0" prefWidth="235.0" promptText="UserName" />
          <PasswordField fx:id="Secret" layoutX="36.0" layoutY="63.0" prefHeight="35.0" prefWidth="235.0" promptText="Password" />
+      
+          <Label fx:id="Show" layoutX="243.0" layoutY="128.0" prefHeight="17.0" prefWidth="107.0" textFill="#c03939" />
       </children>
    </Pane>
 </VBox>

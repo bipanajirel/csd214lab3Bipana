@@ -3,15 +3,15 @@ package com.example.csd214lab3bipana;
 public class Employee {
 
 
-    private int iD;
+    private int Id;
     private String Name;
     private String Email;
     private String Password;
     private String Salary;
 
 
-    public Employee(int iD, String Name, String Email, String Password, String Salary) {
-        this.iD = iD;
+    public Employee(int Id, String Name, String Email, String Password, String Salary) {
+        this.Id = Id;
         this.Name = Name;
         this.Email = Email;
         this.Password = Password;
@@ -19,12 +19,12 @@ public class Employee {
 
     }
 
-    public int getiD() {
-        return iD;
+    public int getId() {
+        return Id;
     }
 
-    public void setiD(int iD) {
-        this.iD= iD;
+    public void setId(int Id) {
+        this.Id= Id;
     }
 
     public String getName() {
